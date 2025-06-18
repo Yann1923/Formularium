@@ -166,7 +166,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
             <Activity className="h-6 w-6 text-primary" />
             <span className="text-lg font-bold text-gray-900">MediForm</span>
           </div>
-          <div className="w-8" /> {/* Spacer */}
+          <div className="w-8"></div>
         </div>
 
         {/* Page content */}
