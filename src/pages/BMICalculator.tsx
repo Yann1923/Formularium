@@ -316,10 +316,11 @@ export default function BMICalculator() {
                     Faktor yang Mempengaruhi BMI:
                   </h4>
                   <ul className="space-y-1 text-gray-600">
-                    <li>• Massa otot</li>
-                    <li>• Kepadatan tulang</li>
+                    <li>• Massa otot dan kepadatan tulang</li>
                     <li>• Komposisi tubuh secara keseluruhan</li>
-                    <li>• Usia dan jenis kelamin</li>
+                    <li>• Usia - metabolisme berubah seiring waktu</li>
+                    <li>• Jenis kelamin - perbedaan distribusi lemak</li>
+                    <li>• Genetik dan etnis</li>
                   </ul>
                 </div>
                 <div>
