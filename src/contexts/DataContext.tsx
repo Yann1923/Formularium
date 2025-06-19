@@ -23,7 +23,7 @@ interface DataProviderProps {
 
 export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
   const [medicines, setMedicines] = useState<Medicine[]>(mockMedicines);
-  const [diseases] = useState<Disease[]>(mockDiseases);
+  const [diseases, setDiseases] = useState<Disease[]>(mockDiseases);
   const [users, setUsers] = useState<User[]>(mockUsers);
 
   const addMedicine = (
@@ -56,6 +56,27 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     setMedicines((prev) => prev.filter((medicine) => medicine.id !== id));
   };
 
+  const addDisease = (disease: Omit<Disease, "id" | "createdAt">) => {
+    const newDisease: Disease = {
+      ...disease,
+      id: Date.now().toString(),
+      createdAt: new Date().toISOString(),
+    };
+    setDiseases((prev) => [...prev, newDisease]);
+  };
+
+  const updateDisease = (id: string, diseaseUpdate: Partial<Disease>) => {
+    setDiseases((prev) =>
+      prev.map((disease) =>
+        disease.id === id ? { ...disease, ...diseaseUpdate } : disease,
+      ),
+    );
+  };
+
+  const deleteDisease = (id: string) => {
+    setDiseases((prev) => prev.filter((disease) => disease.id !== id));
+  };
+
   const addUser = (user: Omit<User, "id" | "createdAt">) => {
     const newUser: User = {
       ...user,
@@ -86,6 +107,9 @@ export const DataProvider: React.FC<DataProviderProps> = ({ children }) => {
     addMedicine,
     updateMedicine,
     deleteMedicine,
+    addDisease,
+    updateDisease,
+    deleteDisease,
     addUser,
     updateUser,
     deleteUser,

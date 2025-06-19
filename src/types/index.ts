@@ -58,6 +58,9 @@ export interface DataContextType {
   ) => void;
   updateMedicine: (id: string, medicine: Partial<Medicine>) => void;
   deleteMedicine: (id: string) => void;
+  addDisease: (disease: Omit<Disease, "id" | "createdAt">) => void;
+  updateDisease: (id: string, disease: Partial<Disease>) => void;
+  deleteDisease: (id: string) => void;
   addUser: (user: Omit<User, "id" | "createdAt">) => void;
   updateUser: (id: string, user: Partial<User>) => void;
   deleteUser: (id: string) => void;
