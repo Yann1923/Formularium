@@ -114,41 +114,86 @@ export default function BMICalculator() {
               <span>Kalkulator BMI</span>
             </CardTitle>
             <CardDescription>
-              Masukkan berat badan dan tinggi badan untuk menghitung BMI Anda
+              Masukkan data lengkap untuk menghitung BMI dan mendapatkan
+              rekomendasi yang tepat
             </CardDescription>
           </CardHeader>
           <CardContent>
             <form onSubmit={handleCalculate} className="space-y-4">
-              <div className="space-y-2">
-                <Label htmlFor="weight" className="flex items-center space-x-2">
-                  <Scale className="h-4 w-4" />
-                  <span>Berat Badan (kg)</span>
-                </Label>
-                <Input
-                  id="weight"
-                  type="number"
-                  step="0.1"
-                  placeholder="Contoh: 70"
-                  value={weight}
-                  onChange={(e) => setWeight(e.target.value)}
-                  required
-                />
-              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="weight"
+                    className="flex items-center space-x-2"
+                  >
+                    <Scale className="h-4 w-4" />
+                    <span>Berat Badan (kg)</span>
+                  </Label>
+                  <Input
+                    id="weight"
+                    type="number"
+                    step="0.1"
+                    placeholder="Contoh: 70"
+                    value={weight}
+                    onChange={(e) => setWeight(e.target.value)}
+                    required
+                  />
+                </div>
 
-              <div className="space-y-2">
-                <Label htmlFor="height" className="flex items-center space-x-2">
-                  <Ruler className="h-4 w-4" />
-                  <span>Tinggi Badan (cm)</span>
-                </Label>
-                <Input
-                  id="height"
-                  type="number"
-                  step="0.1"
-                  placeholder="Contoh: 170"
-                  value={height}
-                  onChange={(e) => setHeight(e.target.value)}
-                  required
-                />
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="height"
+                    className="flex items-center space-x-2"
+                  >
+                    <Ruler className="h-4 w-4" />
+                    <span>Tinggi Badan (cm)</span>
+                  </Label>
+                  <Input
+                    id="height"
+                    type="number"
+                    step="0.1"
+                    placeholder="Contoh: 170"
+                    value={height}
+                    onChange={(e) => setHeight(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="age" className="flex items-center space-x-2">
+                    <TrendingUp className="h-4 w-4" />
+                    <span>Usia (tahun)</span>
+                  </Label>
+                  <Input
+                    id="age"
+                    type="number"
+                    placeholder="Contoh: 25"
+                    value={age}
+                    onChange={(e) => setAge(e.target.value)}
+                    required
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label
+                    htmlFor="gender"
+                    className="flex items-center space-x-2"
+                  >
+                    <Info className="h-4 w-4" />
+                    <span>Jenis Kelamin</span>
+                  </Label>
+                  <select
+                    id="gender"
+                    value={gender}
+                    onChange={(e) => setGender(e.target.value)}
+                    className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-primary"
+                    required
+                  >
+                    <option value="">Pilih jenis kelamin</option>
+                    <option value="laki-laki">Laki-laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </select>
+                </div>
               </div>
 
               {error && (
