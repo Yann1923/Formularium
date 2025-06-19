@@ -18,6 +18,8 @@ export default function BMICalculator() {
   const { calculateBMI } = useData();
   const [weight, setWeight] = useState<string>("");
   const [height, setHeight] = useState<string>("");
+  const [age, setAge] = useState<string>("");
+  const [gender, setGender] = useState<string>("");
   const [result, setResult] = useState<BMIResult | null>(null);
   const [error, setError] = useState<string>("");
 
@@ -27,9 +29,10 @@ export default function BMICalculator() {
 
     const weightNum = parseFloat(weight);
     const heightNum = parseFloat(height);
+    const ageNum = parseInt(age);
 
-    if (!weightNum || !heightNum) {
-      setError("Silakan masukkan berat badan dan tinggi badan yang valid");
+    if (!weightNum || !heightNum || !ageNum || !gender) {
+      setError("Silakan lengkapi semua data yang diperlukan");
       return;
     }
 
@@ -43,8 +46,19 @@ export default function BMICalculator() {
       return;
     }
 
+    if (ageNum < 18 || ageNum > 100) {
+      setError("Usia harus antara 18-100 tahun");
+      return;
+    }
+
     const bmiResult = calculateBMI(weightNum, heightNum);
-    setResult(bmiResult);
+    // Add age and gender to result for more personalized recommendations
+    const enhancedResult = {
+      ...bmiResult,
+      age: ageNum,
+      gender: gender,
+    };
+    setResult(enhancedResult);
   };
 
   const getBMIColor = (bmi: number) => {
