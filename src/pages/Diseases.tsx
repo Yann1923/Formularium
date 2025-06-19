@@ -360,33 +360,7 @@ export default function Diseases() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filteredDiseases.map((disease) => (
           <Dialog key={disease.id}>
-            <Card className="cursor-pointer hover:shadow-lg transition-shadow relative">
-              {isAdmin && (
-                <div className="absolute top-2 right-2 flex space-x-1">
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleEdit(disease);
-                    }}
-                    className="h-8 w-8 p-0"
-                  >
-                    <Edit className="h-4 w-4" />
-                  </Button>
-                  <Button
-                    variant="destructive"
-                    size="sm"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      handleDelete(disease.id);
-                    }}
-                    className="h-8 w-8 p-0"
-                  >
-                    <Trash2 className="h-4 w-4" />
-                  </Button>
-                </div>
-              )}
+            <Card className="cursor-pointer hover:shadow-lg transition-shadow">
               <DialogTrigger asChild>
                 <div>
                   <CardHeader className="pb-3">
@@ -439,6 +413,34 @@ export default function Diseases() {
                         </div>
                       </div>
                     </div>
+                    {isAdmin && (
+                      <div className="flex space-x-2 pt-4 border-t mt-4">
+                        <Button
+                          variant="outline"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleEdit(disease);
+                          }}
+                          className="flex-1"
+                        >
+                          <Edit className="h-4 w-4 mr-1" />
+                          Edit
+                        </Button>
+                        <Button
+                          variant="destructive"
+                          size="sm"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            handleDelete(disease.id);
+                          }}
+                          className="flex-1"
+                        >
+                          <Trash2 className="h-4 w-4 mr-1" />
+                          Hapus
+                        </Button>
+                      </div>
+                    )}
                   </CardContent>
                 </div>
               </DialogTrigger>
