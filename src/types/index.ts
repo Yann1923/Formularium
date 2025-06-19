@@ -40,6 +40,8 @@ export interface BMIResult {
   bmi: number;
   category: string;
   recommendation: string;
+  age?: number;
+  gender?: string;
 }
 
 export interface AuthContextType {
