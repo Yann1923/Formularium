@@ -243,6 +243,18 @@ export default function BMICalculator() {
                     {result.height} cm
                   </p>
                 </div>
+                <div className="text-center">
+                  <p className="text-sm text-gray-500">Usia</p>
+                  <p className="text-lg font-semibold text-gray-900">
+                    {result.age} tahun
+                  </p>
+                </div>
+                <div className="text-center">
+                  <p className="text-sm text-gray-500">Jenis Kelamin</p>
+                  <p className="text-lg font-semibold text-gray-900 capitalize">
+                    {result.gender}
+                  </p>
+                </div>
               </div>
 
               <Alert>
