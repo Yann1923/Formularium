@@ -55,59 +55,98 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="bg-gradient-to-r from-blue-600 to-blue-700 -m-6 lg:-m-8 p-6 lg:p-8 text-white rounded-b-2xl shadow-lg">
-        <div className="flex items-center space-x-4 mb-4">
-          <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
-            <Activity className="h-6 w-6 text-white" />
-          </div>
-          <div>
-            <h1 className="text-3xl font-bold">Dashboard</h1>
-            <p className="text-blue-100 mt-1">
-              Selamat datang, {user?.fullName}! Berikut adalah ringkasan sistem
-              formularium.
-            </p>
-          </div>
-        </div>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                <Pill className="h-4 w-4 text-white" />
+      <div className="bg-gradient-to-r from-primary via-blue-600 to-blue-700 -m-6 lg:-m-8 p-8 lg:p-10 text-white rounded-b-3xl shadow-2xl relative overflow-hidden">
+        {/* Background decoration */}
+        <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
+        <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
+
+        <div className="relative z-10">
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8">
+            <div className="flex items-center space-x-4 mb-6 lg:mb-0">
+              <div className="w-16 h-16 bg-white/20 backdrop-blur-sm rounded-2xl flex items-center justify-center border border-white/30">
+                <Activity className="h-8 w-8 text-white drop-shadow-lg" />
               </div>
               <div>
-                <p className="text-white/80 text-sm">Total Obat</p>
-                <p className="text-2xl font-bold text-white">
-                  {medicines.length}
+                <h1 className="text-4xl lg:text-5xl font-bold mb-2 drop-shadow-lg">
+                  Dashboard
+                </h1>
+                <p className="text-blue-100 text-lg">
+                  Selamat datang,{" "}
+                  <span className="font-semibold text-white">
+                    {user?.fullName}
+                  </span>
+                  !
+                </p>
+                <p className="text-blue-200 text-sm mt-1">
+                  Berikut adalah ringkasan sistem formularium rumah sakit
                 </p>
               </div>
             </div>
-          </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                <Stethoscope className="h-4 w-4 text-white" />
-              </div>
-              <div>
-                <p className="text-white/80 text-sm">Total Penyakit</p>
-                <p className="text-2xl font-bold text-white">
-                  {diseases.length}
-                </p>
-              </div>
+            <div className="text-right">
+              <p className="text-blue-100 text-sm">Tanggal hari ini</p>
+              <p className="text-white font-semibold text-lg">
+                {new Date().toLocaleDateString("id-ID", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                })}
+              </p>
             </div>
           </div>
-          <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4">
-            <div className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-white/20 rounded-lg flex items-center justify-center">
-                <TrendingUp className="h-4 w-4 text-white" />
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-blue-100 text-sm font-medium mb-2">
+                    Total Obat
+                  </p>
+                  <p className="text-3xl font-bold text-white mb-1">
+                    {medicines.length}
+                  </p>
+                  <p className="text-blue-200 text-xs">Jenis obat tersedia</p>
+                </div>
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Pill className="h-6 w-6 text-white" />
+                </div>
               </div>
-              <div>
-                <p className="text-white/80 text-sm">Total Stok</p>
-                <p className="text-2xl font-bold text-white">
-                  {medicines.reduce(
-                    (total, medicine) => total + medicine.stock,
-                    0,
-                  )}
-                </p>
+            </div>
+
+            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-blue-100 text-sm font-medium mb-2">
+                    Total Penyakit
+                  </p>
+                  <p className="text-3xl font-bold text-white mb-1">
+                    {diseases.length}
+                  </p>
+                  <p className="text-blue-200 text-xs">Database penyakit</p>
+                </div>
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Stethoscope className="h-6 w-6 text-white" />
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-white/15 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300">
+              <div className="flex items-center justify-between">
+                <div>
+                  <p className="text-blue-100 text-sm font-medium mb-2">
+                    Total Stok
+                  </p>
+                  <p className="text-3xl font-bold text-white mb-1">
+                    {medicines.reduce(
+                      (total, medicine) => total + medicine.stock,
+                      0,
+                    )}
+                  </p>
+                  <p className="text-blue-200 text-xs">Unit obat tersedia</p>
+                </div>
+                <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
+                  <TrendingUp className="h-6 w-6 text-white" />
+                </div>
               </div>
             </div>
           </div>
@@ -116,72 +155,81 @@ export default function Dashboard() {
 
       {/* Quick Actions */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200">
           <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                <Pill className="h-6 w-6 text-blue-600" />
-              </div>
+            <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Kelola Obat</p>
-                <p className="text-lg font-semibold text-gray-900">
-                  {medicines.length} Item
+                <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Pill className="h-7 w-7 text-white" />
+                </div>
+                <p className="text-sm font-medium text-blue-700 mb-1">
+                  Kelola Obat
                 </p>
+                <p className="text-2xl font-bold text-blue-900">
+                  {medicines.length}
+                </p>
+                <p className="text-xs text-blue-600">Item tersedia</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200">
           <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-green-100 rounded-lg flex items-center justify-center">
-                <Stethoscope className="h-6 w-6 text-green-600" />
-              </div>
+            <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">
+                <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <Stethoscope className="h-7 w-7 text-white" />
+                </div>
+                <p className="text-sm font-medium text-green-700 mb-1">
                   Data Penyakit
                 </p>
-                <p className="text-lg font-semibold text-gray-900">
-                  {diseases.length} Penyakit
+                <p className="text-2xl font-bold text-green-900">
+                  {diseases.length}
                 </p>
+                <p className="text-xs text-green-600">Penyakit terdaftar</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+        <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200">
           <CardContent className="p-6">
-            <div className="flex items-center space-x-4">
-              <div className="w-12 h-12 bg-purple-100 rounded-lg flex items-center justify-center">
-                <TrendingUp className="h-6 w-6 text-purple-600" />
-              </div>
+            <div className="flex items-center justify-between">
               <div>
-                <p className="text-sm font-medium text-gray-600">Stok Total</p>
-                <p className="text-lg font-semibold text-gray-900">
+                <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                  <TrendingUp className="h-7 w-7 text-white" />
+                </div>
+                <p className="text-sm font-medium text-purple-700 mb-1">
+                  Stok Total
+                </p>
+                <p className="text-2xl font-bold text-purple-900">
                   {medicines.reduce(
                     (total, medicine) => total + medicine.stock,
                     0,
-                  )}{" "}
-                  Unit
+                  )}
                 </p>
+                <p className="text-xs text-purple-600">Unit tersedia</p>
               </div>
             </div>
           </CardContent>
         </Card>
 
         {user?.role === "admin" && (
-          <Card className="hover:shadow-lg transition-shadow cursor-pointer">
+          <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200">
             <CardContent className="p-6">
-              <div className="flex items-center space-x-4">
-                <div className="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center">
-                  <Users className="h-6 w-6 text-orange-600" />
-                </div>
+              <div className="flex items-center justify-between">
                 <div>
-                  <p className="text-sm font-medium text-gray-600">Pengguna</p>
-                  <p className="text-lg font-semibold text-gray-900">
-                    {users.length} User
+                  <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Users className="h-7 w-7 text-white" />
+                  </div>
+                  <p className="text-sm font-medium text-orange-700 mb-1">
+                    Pengguna
                   </p>
+                  <p className="text-2xl font-bold text-orange-900">
+                    {users.length}
+                  </p>
+                  <p className="text-xs text-orange-600">User aktif</p>
                 </div>
               </div>
             </CardContent>
@@ -207,25 +255,36 @@ export default function Dashboard() {
                 {lowStockMedicines.slice(0, 5).map((medicine) => (
                   <div
                     key={medicine.id}
-                    className="flex items-center justify-between p-3 bg-red-50 rounded-lg"
+                    className="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100 hover:bg-red-100 transition-colors duration-200"
                   >
-                    <div>
-                      <p className="font-medium text-gray-900">
-                        {medicine.name}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {medicine.category}
-                      </p>
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                        <Pill className="h-5 w-5 text-red-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 mb-1">
+                          {medicine.name}
+                        </p>
+                        <p className="text-sm text-red-600 font-medium">
+                          {medicine.category}
+                        </p>
+                      </div>
                     </div>
-                    <span className="px-2 py-1 bg-red-100 text-red-800 rounded-full text-sm font-medium">
-                      {medicine.stock} unit
-                    </span>
+                    <div className="text-right">
+                      <span className="px-3 py-2 bg-red-200 text-red-800 rounded-xl text-sm font-bold">
+                        {medicine.stock} unit
+                      </span>
+                      <p className="text-xs text-red-600 mt-1">Stok rendah!</p>
+                    </div>
                   </div>
                 ))}
                 {lowStockMedicines.length > 5 && (
-                  <p className="text-sm text-gray-500 text-center">
-                    +{lowStockMedicines.length - 5} obat lainnya
-                  </p>
+                  <div className="text-center p-3 bg-red-50 rounded-lg border border-red-100">
+                    <p className="text-sm text-red-600 font-medium">
+                      +{lowStockMedicines.length - 5} obat lainnya dengan stok
+                      rendah
+                    </p>
+                  </div>
                 )}
               </div>
             ) : (
@@ -252,27 +311,40 @@ export default function Dashboard() {
                 {expiringSoonMedicines.slice(0, 5).map((medicine) => (
                   <div
                     key={medicine.id}
-                    className="flex items-center justify-between p-3 bg-orange-50 rounded-lg"
+                    className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100 hover:bg-orange-100 transition-colors duration-200"
                   >
-                    <div>
-                      <p className="font-medium text-gray-900">
-                        {medicine.name}
-                      </p>
-                      <p className="text-sm text-gray-600">
-                        {medicine.category}
+                    <div className="flex items-center space-x-3">
+                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                        <Activity className="h-5 w-5 text-orange-600" />
+                      </div>
+                      <div>
+                        <p className="font-semibold text-gray-900 mb-1">
+                          {medicine.name}
+                        </p>
+                        <p className="text-sm text-orange-600 font-medium">
+                          {medicine.category}
+                        </p>
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <span className="px-3 py-2 bg-orange-200 text-orange-800 rounded-xl text-sm font-bold">
+                        {new Date(medicine.expiryDate).toLocaleDateString(
+                          "id-ID",
+                        )}
+                      </span>
+                      <p className="text-xs text-orange-600 mt-1">
+                        Segera kedaluwarsa
                       </p>
                     </div>
-                    <span className="px-2 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
-                      {new Date(medicine.expiryDate).toLocaleDateString(
-                        "id-ID",
-                      )}
-                    </span>
                   </div>
                 ))}
                 {expiringSoonMedicines.length > 5 && (
-                  <p className="text-sm text-gray-500 text-center">
-                    +{expiringSoonMedicines.length - 5} obat lainnya
-                  </p>
+                  <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100">
+                    <p className="text-sm text-orange-600 font-medium">
+                      +{expiringSoonMedicines.length - 5} obat lainnya akan
+                      kedaluwarsa
+                    </p>
+                  </div>
                 )}
               </div>
             ) : (
@@ -299,26 +371,34 @@ export default function Dashboard() {
             {medicines.slice(0, 5).map((medicine) => (
               <div
                 key={medicine.id}
-                className="flex items-center justify-between p-4 border border-gray-200 rounded-lg"
+                className="flex items-center justify-between p-5 bg-white border border-blue-100 rounded-2xl hover:shadow-md hover:border-blue-200 transition-all duration-300"
               >
                 <div className="flex items-center space-x-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <Pill className="h-6 w-6 text-blue-600" />
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
+                    <Pill className="h-7 w-7 text-blue-600" />
                   </div>
                   <div>
-                    <h3 className="font-medium text-gray-900">
+                    <h3 className="font-semibold text-gray-900 text-lg mb-1">
                       {medicine.name}
                     </h3>
-                    <p className="text-sm text-gray-600">
-                      {medicine.category} - {medicine.dosage}
+                    <p className="text-sm text-blue-600 font-medium">
+                      {medicine.category} • {medicine.dosage}
+                    </p>
+                    <p className="text-xs text-gray-500 mt-1">
+                      {medicine.manufacturer}
                     </p>
                   </div>
                 </div>
                 <div className="text-right">
-                  <p className="font-medium text-gray-900">
-                    Stok: {medicine.stock}
-                  </p>
-                  <p className="text-sm text-gray-600">
+                  <div className="flex items-center space-x-2 mb-2">
+                    <span
+                      className={`w-3 h-3 rounded-full ${medicine.stock > 50 ? "bg-green-400" : medicine.stock > 20 ? "bg-yellow-400" : "bg-red-400"}`}
+                    ></span>
+                    <p className="font-bold text-gray-900 text-lg">
+                      {medicine.stock} unit
+                    </p>
+                  </div>
+                  <p className="text-sm text-gray-600 bg-gray-50 px-3 py-1 rounded-lg">
                     Rp {medicine.price.toLocaleString("id-ID")}
                   </p>
                 </div>
