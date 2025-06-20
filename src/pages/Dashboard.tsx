@@ -56,7 +56,7 @@ export default function Dashboard() {
   return (
     <div className="space-y-8">
       {/* Header */}
-      <div className="bg-gradient-to-r from-primary via-blue-600 to-blue-700 p-8 lg:p-12 text-white rounded-3xl shadow-2xl relative overflow-hidden mb-8">
+      <div className="bg-gradient-to-r from-primary via-blue-600 to-blue-700 p-6 lg:p-8 text-white rounded-2xl shadow-2xl relative overflow-hidden mb-8">
         {/* Background decoration */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -translate-y-32 translate-x-32"></div>
         <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/5 rounded-full translate-y-24 -translate-x-24"></div>
