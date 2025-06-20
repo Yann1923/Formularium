@@ -13,6 +13,7 @@ import {
   Menu,
   X,
   Activity,
+  TrendingUp,
 } from "lucide-react";
 
 interface LayoutProps {
@@ -53,6 +54,12 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       path: "/diseases",
       label: "Daftar Penyakit",
       icon: Stethoscope,
+      roles: ["admin", "apoteker"],
+    },
+    {
+      path: "/protocol-therapy",
+      label: "Protokol Terapi",
+      icon: TrendingUp,
       roles: ["admin", "apoteker"],
     },
     {

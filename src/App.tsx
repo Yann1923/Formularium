@@ -8,6 +8,7 @@ import Dashboard from "./pages/Dashboard";
 import Profile from "./pages/Profile";
 import Medicines from "./pages/Medicines";
 import Diseases from "./pages/Diseases";
+import ProtocolTherapy from "./pages/ProtocolTherapy";
 import BMICalculator from "./pages/BMICalculator";
 import UserManagement from "./pages/UserManagement";
 import NotFound from "./pages/NotFound";
@@ -62,6 +63,17 @@ function App() {
                 <ProtectedRoute>
                   <Layout>
                     <Diseases />
+                  </Layout>
+                </ProtectedRoute>
+              }
+            />
+
+            <Route
+              path="/protocol-therapy"
+              element={
+                <ProtectedRoute>
+                  <Layout>
+                    <ProtocolTherapy />
                   </Layout>
                 </ProtectedRoute>
               }

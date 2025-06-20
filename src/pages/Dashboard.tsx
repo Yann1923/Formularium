@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useAuth } from "../contexts/AuthContext";
 import { useData } from "../contexts/DataContext";
 import { Button } from "../components/ui/button";
@@ -171,82 +172,92 @@ export default function Dashboard() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
-                    <Pill className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-blue-700 mb-1">
-                      Kelola Obat
-                    </p>
-                    <p className="text-2xl font-bold text-blue-900">
-                      {medicines.length}
-                    </p>
-                    <p className="text-xs text-blue-600">Item tersedia</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
-                    <Stethoscope className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-green-700 mb-1">
-                      Data Penyakit
-                    </p>
-                    <p className="text-2xl font-bold text-green-900">
-                      {diseases.length}
-                    </p>
-                    <p className="text-xs text-green-600">Penyakit terdaftar</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200">
-              <CardContent className="p-6">
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
-                    <TrendingUp className="h-7 w-7 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <p className="text-sm font-medium text-purple-700 mb-1">
-                      Protokol Terapi
-                    </p>
-                    <p className="text-2xl font-bold text-purple-900">
-                      {new Set(medicines.map((m) => m.category)).size}
-                    </p>
-                    <p className="text-xs text-purple-600">Kategori terapi</p>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
-
-            {user?.role === "admin" && (
-              <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200">
+            <Link to="/medicines" className="block">
+              <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200">
                 <CardContent className="p-6">
                   <div className="flex items-center space-x-4">
-                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
-                      <Users className="h-7 w-7 text-white" />
+                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                      <Pill className="h-7 w-7 text-white" />
                     </div>
                     <div className="flex-1">
-                      <p className="text-sm font-medium text-orange-700 mb-1">
-                        Pengguna
+                      <p className="text-sm font-medium text-blue-700 mb-1">
+                        Kelola Obat
                       </p>
-                      <p className="text-2xl font-bold text-orange-900">
-                        {users.length}
+                      <p className="text-2xl font-bold text-blue-900">
+                        {medicines.length}
                       </p>
-                      <p className="text-xs text-orange-600">User aktif</p>
+                      <p className="text-xs text-blue-600">Item tersedia</p>
                     </div>
                   </div>
                 </CardContent>
               </Card>
+            </Link>
+
+            <Link to="/diseases" className="block">
+              <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                      <Stethoscope className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-green-700 mb-1">
+                        Data Penyakit
+                      </p>
+                      <p className="text-2xl font-bold text-green-900">
+                        {diseases.length}
+                      </p>
+                      <p className="text-xs text-green-600">
+                        Penyakit terdaftar
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            <Link to="/protocol-therapy" className="block">
+              <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200">
+                <CardContent className="p-6">
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                      <TrendingUp className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <p className="text-sm font-medium text-purple-700 mb-1">
+                        Protokol Terapi
+                      </p>
+                      <p className="text-2xl font-bold text-purple-900">
+                        {new Set(medicines.map((m) => m.category)).size}
+                      </p>
+                      <p className="text-xs text-purple-600">Kategori terapi</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </Link>
+
+            {user?.role === "admin" && (
+              <Link to="/users" className="block">
+                <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200">
+                  <CardContent className="p-6">
+                    <div className="flex items-center space-x-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                        <Users className="h-7 w-7 text-white" />
+                      </div>
+                      <div className="flex-1">
+                        <p className="text-sm font-medium text-orange-700 mb-1">
+                          Pengguna
+                        </p>
+                        <p className="text-2xl font-bold text-orange-900">
+                          {users.length}
+                        </p>
+                        <p className="text-xs text-orange-600">User aktif</p>
+                      </div>
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             )}
           </div>
         </div>
