@@ -65,7 +65,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
     {
       path: "/bmi-calculator",
       label: "Kalkulator BMI",
-      icon: Calculator,
+      icon: TrendingDown,
       roles: ["admin", "apoteker"],
     },
     { path: "/users", label: "Kelola Pengguna", icon: Users, roles: ["admin"] },
