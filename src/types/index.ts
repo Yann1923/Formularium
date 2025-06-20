@@ -12,12 +12,14 @@ export interface Medicine {
   id: string;
   name: string;
   category: string;
+  therapeuticClass: string;
+  subTherapeuticClass: string;
   dosage: string;
+  isGeneric: boolean;
+  usageRestriction: string;
   description: string;
   sideEffects: string;
   manufacturer: string;
-  expiryDate: string;
-  stock: number;
   price: number;
   createdAt: string;
   updatedAt: string;

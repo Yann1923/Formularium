@@ -140,12 +140,12 @@ export default function Dashboard() {
               <div className="flex items-center justify-between">
                 <div>
                   <p className="text-blue-100 text-sm font-medium mb-2">
-                    Kategori Obat
+                    Formularium
                   </p>
                   <p className="text-3xl font-bold text-white mb-1">
-                    {new Set(medicines.map((m) => m.category)).size}
+                    {medicines.length}
                   </p>
-                  <p className="text-blue-200 text-xs">Klasifikasi tersedia</p>
+                  <p className="text-blue-200 text-xs">Obat terdaftar</p>
                 </div>
                 <div className="w-12 h-12 bg-white/20 rounded-xl flex items-center justify-center">
                   <TrendingUp className="h-6 w-6 text-white" />
