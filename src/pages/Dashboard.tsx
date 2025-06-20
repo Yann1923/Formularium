@@ -1,14 +1,15 @@
 import React from "react";
 import { useAuth } from "../contexts/AuthContext";
 import { useData } from "../contexts/DataContext";
+import { Button } from "../components/ui/button";
 import {
   Card,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "../components/ui/card";
-import { Activity, Pill, Stethoscope, Users, TrendingUp } from "lucide-react";
-
+import { Activity, Pill, Stethoscope, TrendingUp, Users } from "lucide-react";
 export default function Dashboard() {
   const { user } = useAuth();
   const { medicines, diseases, users } = useData();
