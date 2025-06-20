@@ -54,7 +54,7 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+    <div className="space-y-8">
       {/* Header */}
       <div className="bg-gradient-to-r from-primary via-blue-600 to-blue-700 -m-6 lg:-m-8 p-8 lg:p-12 text-white rounded-b-3xl shadow-2xl relative overflow-hidden mb-8">
         {/* Background decoration */}

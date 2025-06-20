@@ -154,7 +154,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
       </div>
 
       {/* Main content */}
-      <div className="lg:pl-64 min-h-screen bg-gray-50">
+      <div className="lg:pl-64">
         {/* Mobile header */}
         <div className="lg:hidden flex items-center justify-between h-16 px-4 bg-white border-b border-gray-200 shadow-sm">
           <Button
@@ -173,7 +173,9 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
         </div>
 
         {/* Page content */}
-        <main className="p-6 lg:p-8 max-w-7xl mx-auto">{children}</main>
+        <main className="min-h-screen bg-gray-50">
+          <div className="max-w-7xl mx-auto p-6 lg:p-8">{children}</div>
+        </main>
       </div>
     </div>
   );
