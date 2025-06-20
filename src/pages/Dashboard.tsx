@@ -173,11 +173,11 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-blue-50 to-blue-100 hover:from-blue-100 hover:to-blue-200">
               <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Pill className="h-7 w-7 text-white" />
-                    </div>
+                <div className="flex items-center space-x-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                    <Pill className="h-7 w-7 text-white" />
+                  </div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-blue-700 mb-1">
                       Kelola Obat
                     </p>
@@ -192,11 +192,11 @@ export default function Dashboard() {
 
             <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-green-50 to-green-100 hover:from-green-100 hover:to-green-200">
               <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <Stethoscope className="h-7 w-7 text-white" />
-                    </div>
+                <div className="flex items-center space-x-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                    <Stethoscope className="h-7 w-7 text-white" />
+                  </div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-green-700 mb-1">
                       Data Penyakit
                     </p>
@@ -211,11 +211,11 @@ export default function Dashboard() {
 
             <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-purple-50 to-purple-100 hover:from-purple-100 hover:to-purple-200">
               <CardContent className="p-6">
-                <div className="flex items-center justify-between">
-                  <div>
-                    <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                      <TrendingUp className="h-7 w-7 text-white" />
-                    </div>
+                <div className="flex items-center space-x-4">
+                  <div className="w-14 h-14 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                    <TrendingUp className="h-7 w-7 text-white" />
+                  </div>
+                  <div className="flex-1">
                     <p className="text-sm font-medium text-purple-700 mb-1">
                       Protokol Terapi
                     </p>
@@ -231,11 +231,11 @@ export default function Dashboard() {
             {user?.role === "admin" && (
               <Card className="group hover:shadow-xl hover:-translate-y-1 transition-all duration-300 cursor-pointer border-0 bg-gradient-to-br from-orange-50 to-orange-100 hover:from-orange-100 hover:to-orange-200">
                 <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div>
-                      <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                        <Users className="h-7 w-7 text-white" />
-                      </div>
+                  <div className="flex items-center space-x-4">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg flex-shrink-0">
+                      <Users className="h-7 w-7 text-white" />
+                    </div>
+                    <div className="flex-1">
                       <p className="text-sm font-medium text-orange-700 mb-1">
                         Pengguna
                       </p>
