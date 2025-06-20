@@ -174,7 +174,7 @@ export const Layout: React.FC<LayoutProps> = ({ children }) => {
 
         {/* Page content */}
         <main className="min-h-screen bg-gray-50">
-          <div className="max-w-7xl mx-auto p-6 lg:p-8">{children}</div>
+          <div className="p-6 lg:p-8">{children}</div>
         </main>
       </div>
     </div>
