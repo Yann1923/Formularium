@@ -53,7 +53,7 @@ export default function Dashboard() {
   });
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-8 animate-fade-in">
       {/* Header */}
       <div className="bg-gradient-to-r from-primary via-blue-600 to-blue-700 -m-6 lg:-m-8 p-8 lg:p-10 text-white rounded-b-3xl shadow-2xl relative overflow-hidden">
         {/* Background decoration */}
@@ -237,176 +237,240 @@ export default function Dashboard() {
         )}
       </div>
 
-      {/* Alert Cards */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        {/* Low Stock Medicines */}
-        <Card className="shadow-lg border-l-4 border-l-red-500">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-red-100 rounded-lg flex items-center justify-center">
-                <Activity className="h-4 w-4 text-red-600" />
-              </div>
-              <span className="text-red-700">Obat Stok Rendah</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {lowStockMedicines.length > 0 ? (
-              <div className="space-y-3">
-                {lowStockMedicines.slice(0, 5).map((medicine) => (
-                  <div
-                    key={medicine.id}
-                    className="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100 hover:bg-red-100 transition-colors duration-200"
-                  >
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                        <Pill className="h-5 w-5 text-red-600" />
-                      </div>
-                      <div>
-                        <p className="font-semibold text-gray-900 mb-1">
-                          {medicine.name}
-                        </p>
-                        <p className="text-sm text-red-600 font-medium">
-                          {medicine.category}
-                        </p>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <span className="px-3 py-2 bg-red-200 text-red-800 rounded-xl text-sm font-bold">
-                        {medicine.stock} unit
-                      </span>
-                      <p className="text-xs text-red-600 mt-1">Stok rendah!</p>
-                    </div>
-                  </div>
-                ))}
-                {lowStockMedicines.length > 5 && (
-                  <div className="text-center p-3 bg-red-50 rounded-lg border border-red-100">
-                    <p className="text-sm text-red-600 font-medium">
-                      +{lowStockMedicines.length - 5} obat lainnya dengan stok
-                      rendah
-                    </p>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <p className="text-gray-500 text-center py-4">
-                Tidak ada obat dengan stok rendah
-              </p>
-            )}
-          </CardContent>
-        </Card>
+      {/* Status & Alerts Section */}
+      <div className="space-y-6">
+        <div className="flex items-center justify-between">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              Status & Peringatan
+            </h2>
+            <p className="text-gray-600">
+              Pantau kondisi obat yang memerlukan perhatian khusus
+            </p>
+          </div>
+        </div>
 
-        {/* Expiring Soon Medicines */}
-        <Card className="shadow-lg border-l-4 border-l-orange-500">
-          <CardHeader className="pb-3">
-            <CardTitle className="flex items-center space-x-3">
-              <div className="w-8 h-8 bg-orange-100 rounded-lg flex items-center justify-center">
-                <Activity className="h-4 w-4 text-orange-600" />
-              </div>
-              <span className="text-orange-700">Obat Akan Kedaluwarsa</span>
-            </CardTitle>
-          </CardHeader>
-          <CardContent>
-            {expiringSoonMedicines.length > 0 ? (
-              <div className="space-y-3">
-                {expiringSoonMedicines.slice(0, 5).map((medicine) => (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          {/* Low Stock Medicines */}
+          <Card className="shadow-xl border-0 bg-gradient-to-br from-red-50 to-red-100">
+            <CardHeader className="pb-4 bg-gradient-to-r from-red-500 to-red-600 text-white rounded-t-lg">
+              <CardTitle className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Activity className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-lg font-bold">Obat Stok Rendah</span>
+                  <p className="text-red-100 text-sm font-normal mt-1">
+                    {lowStockMedicines.length} obat memerlukan restock
+                  </p>
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {lowStockMedicines.length > 0 ? (
+                <div className="space-y-3 p-6">
+                  {lowStockMedicines.slice(0, 5).map((medicine) => (
+                    <div
+                      key={medicine.id}
+                      className="flex items-center justify-between p-4 bg-red-50 rounded-xl border border-red-100 hover:bg-red-100 transition-colors duration-200"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                          <Pill className="h-5 w-5 text-red-600" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1">
+                            {medicine.name}
+                          </p>
+                          <p className="text-sm text-red-600 font-medium">
+                            {medicine.category}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="px-3 py-2 bg-red-200 text-red-800 rounded-xl text-sm font-bold">
+                          {medicine.stock} unit
+                        </span>
+                        <p className="text-xs text-red-600 mt-1">
+                          Stok rendah!
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                  {lowStockMedicines.length > 5 && (
+                    <div className="text-center p-3 bg-red-50 rounded-lg border border-red-100">
+                      <p className="text-sm text-red-600 font-medium">
+                        +{lowStockMedicines.length - 5} obat lainnya dengan stok
+                        rendah
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="p-6 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Activity className="h-8 w-8 text-green-600" />
+                  </div>
+                  <p className="text-green-600 font-medium mb-2">
+                    Semua Stok Aman!
+                  </p>
+                  <p className="text-green-500 text-sm">
+                    Tidak ada obat dengan stok rendah saat ini
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+
+          {/* Expiring Soon Medicines */}
+          <Card className="shadow-xl border-0 bg-gradient-to-br from-orange-50 to-orange-100">
+            <CardHeader className="pb-4 bg-gradient-to-r from-orange-500 to-orange-600 text-white rounded-t-lg">
+              <CardTitle className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Activity className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-lg font-bold">
+                    Obat Akan Kedaluwarsa
+                  </span>
+                  <p className="text-orange-100 text-sm font-normal mt-1">
+                    {expiringSoonMedicines.length} obat dalam 6 bulan ke depan
+                  </p>
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent>
+              {expiringSoonMedicines.length > 0 ? (
+                <div className="space-y-3 p-6">
+                  {expiringSoonMedicines.slice(0, 5).map((medicine) => (
+                    <div
+                      key={medicine.id}
+                      className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100 hover:bg-orange-100 transition-colors duration-200"
+                    >
+                      <div className="flex items-center space-x-3">
+                        <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                          <Activity className="h-5 w-5 text-orange-600" />
+                        </div>
+                        <div>
+                          <p className="font-semibold text-gray-900 mb-1">
+                            {medicine.name}
+                          </p>
+                          <p className="text-sm text-orange-600 font-medium">
+                            {medicine.category}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="text-right">
+                        <span className="px-3 py-2 bg-orange-200 text-orange-800 rounded-xl text-sm font-bold">
+                          {new Date(medicine.expiryDate).toLocaleDateString(
+                            "id-ID",
+                          )}
+                        </span>
+                        <p className="text-xs text-orange-600 mt-1">
+                          Segera kedaluwarsa
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                  {expiringSoonMedicines.length > 5 && (
+                    <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100">
+                      <p className="text-sm text-orange-600 font-medium">
+                        +{expiringSoonMedicines.length - 5} obat lainnya akan
+                        kedaluwarsa
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <div className="p-6 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Activity className="h-8 w-8 text-green-600" />
+                  </div>
+                  <p className="text-green-600 font-medium mb-2">
+                    Semua Tanggal Aman!
+                  </p>
+                  <p className="text-green-500 text-sm">
+                    Tidak ada obat yang akan kedaluwarsa dalam 6 bulan ke depan
+                  </p>
+                </div>
+              )}
+            </CardContent>
+          </Card>
+        </div>
+
+        {/* Recent Medicines Section */}
+        <div className="space-y-6">
+          <div className="flex items-center justify-between">
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                Data Obat Terkini
+              </h2>
+              <p className="text-gray-600">
+                Daftar obat yang tersedia dalam sistem formularium
+              </p>
+            </div>
+            <Button variant="outline" className="hover:bg-blue-50">
+              Lihat Semua
+            </Button>
+          </div>
+
+          <Card className="shadow-xl border-0 overflow-hidden">
+            <CardHeader className="bg-gradient-to-r from-blue-600 to-blue-700 text-white">
+              <CardTitle className="flex items-center space-x-3">
+                <div className="w-10 h-10 bg-white/20 rounded-xl flex items-center justify-center">
+                  <Pill className="h-5 w-5 text-white" />
+                </div>
+                <div>
+                  <span className="text-lg font-bold">Inventori Obat</span>
+                  <p className="text-blue-100 text-sm font-normal mt-1">
+                    {medicines.length} jenis obat tersedia
+                  </p>
+                </div>
+              </CardTitle>
+            </CardHeader>
+            <CardContent className="p-0">
+              <div className="divide-y divide-gray-100">
+                {medicines.slice(0, 5).map((medicine) => (
                   <div
                     key={medicine.id}
-                    className="flex items-center justify-between p-4 bg-orange-50 rounded-xl border border-orange-100 hover:bg-orange-100 transition-colors duration-200"
+                    className="flex items-center justify-between p-5 bg-white border border-blue-100 rounded-2xl hover:shadow-md hover:border-blue-200 transition-all duration-300"
                   >
-                    <div className="flex items-center space-x-3">
-                      <div className="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
-                        <Activity className="h-5 w-5 text-orange-600" />
+                    <div className="flex items-center space-x-4">
+                      <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
+                        <Pill className="h-7 w-7 text-blue-600" />
                       </div>
                       <div>
-                        <p className="font-semibold text-gray-900 mb-1">
+                        <h3 className="font-semibold text-gray-900 text-lg mb-1">
                           {medicine.name}
+                        </h3>
+                        <p className="text-sm text-blue-600 font-medium">
+                          {medicine.category} • {medicine.dosage}
                         </p>
-                        <p className="text-sm text-orange-600 font-medium">
-                          {medicine.category}
+                        <p className="text-xs text-gray-500 mt-1">
+                          {medicine.manufacturer}
                         </p>
                       </div>
                     </div>
                     <div className="text-right">
-                      <span className="px-3 py-2 bg-orange-200 text-orange-800 rounded-xl text-sm font-bold">
-                        {new Date(medicine.expiryDate).toLocaleDateString(
-                          "id-ID",
-                        )}
-                      </span>
-                      <p className="text-xs text-orange-600 mt-1">
-                        Segera kedaluwarsa
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span
+                          className={`w-3 h-3 rounded-full ${medicine.stock > 50 ? "bg-green-400" : medicine.stock > 20 ? "bg-yellow-400" : "bg-red-400"}`}
+                        ></span>
+                        <p className="font-bold text-gray-900 text-lg">
+                          {medicine.stock} unit
+                        </p>
+                      </div>
+                      <p className="text-sm text-gray-600 bg-gray-50 px-3 py-1 rounded-lg">
+                        Rp {medicine.price.toLocaleString("id-ID")}
                       </p>
                     </div>
                   </div>
                 ))}
-                {expiringSoonMedicines.length > 5 && (
-                  <div className="text-center p-3 bg-orange-50 rounded-lg border border-orange-100">
-                    <p className="text-sm text-orange-600 font-medium">
-                      +{expiringSoonMedicines.length - 5} obat lainnya akan
-                      kedaluwarsa
-                    </p>
-                  </div>
-                )}
               </div>
-            ) : (
-              <p className="text-gray-500 text-center py-4">
-                Tidak ada obat yang akan kedaluwarsa
-              </p>
-            )}
-          </CardContent>
-        </Card>
+            </CardContent>
+          </Card>
+        </div>
       </div>
-
-      {/* Recent Medicines */}
-      <Card className="shadow-lg">
-        <CardHeader className="bg-gradient-to-r from-blue-50 to-blue-100 rounded-t-lg">
-          <CardTitle className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-              <Pill className="h-4 w-4 text-blue-600" />
-            </div>
-            <span className="text-blue-700">Obat Terbaru</span>
-          </CardTitle>
-        </CardHeader>
-        <CardContent className="p-6">
-          <div className="space-y-4">
-            {medicines.slice(0, 5).map((medicine) => (
-              <div
-                key={medicine.id}
-                className="flex items-center justify-between p-5 bg-white border border-blue-100 rounded-2xl hover:shadow-md hover:border-blue-200 transition-all duration-300"
-              >
-                <div className="flex items-center space-x-4">
-                  <div className="w-14 h-14 bg-gradient-to-br from-blue-100 to-blue-200 rounded-2xl flex items-center justify-center">
-                    <Pill className="h-7 w-7 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-semibold text-gray-900 text-lg mb-1">
-                      {medicine.name}
-                    </h3>
-                    <p className="text-sm text-blue-600 font-medium">
-                      {medicine.category} • {medicine.dosage}
-                    </p>
-                    <p className="text-xs text-gray-500 mt-1">
-                      {medicine.manufacturer}
-                    </p>
-                  </div>
-                </div>
-                <div className="text-right">
-                  <div className="flex items-center space-x-2 mb-2">
-                    <span
-                      className={`w-3 h-3 rounded-full ${medicine.stock > 50 ? "bg-green-400" : medicine.stock > 20 ? "bg-yellow-400" : "bg-red-400"}`}
-                    ></span>
-                    <p className="font-bold text-gray-900 text-lg">
-                      {medicine.stock} unit
-                    </p>
-                  </div>
-                  <p className="text-sm text-gray-600 bg-gray-50 px-3 py-1 rounded-lg">
-                    Rp {medicine.price.toLocaleString("id-ID")}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </CardContent>
-      </Card>
     </div>
   );
 }
