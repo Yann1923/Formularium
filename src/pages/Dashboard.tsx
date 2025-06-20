@@ -159,7 +159,7 @@ export default function Dashboard() {
         {/* Quick Actions */}
         <div className="space-y-6">
           <div className="flex items-center justify-between">
-            <div>
+            <div className="w-full md:w-auto text-center md:text-left">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Akses Cepat
               </h2>
@@ -255,8 +255,8 @@ export default function Dashboard() {
 
         {/* Status & Alerts Section */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-col md:flex-row items-center justify-between space-y-2 md:space-y-0">
+            <div className="text-center md:text-left">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Status & Peringatan
               </h2>
@@ -422,8 +422,8 @@ export default function Dashboard() {
 
         {/* Recent Medicines Section */}
         <div className="space-y-6">
-          <div className="flex items-center justify-between">
-            <div>
+          <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
+            <div className="text-center lg:text-left">
               <h2 className="text-2xl font-bold text-gray-900 mb-2">
                 Data Obat Terkini
               </h2>
@@ -431,7 +431,7 @@ export default function Dashboard() {
                 Daftar obat yang tersedia dalam sistem formularium
               </p>
             </div>
-            <div className="flex items-center space-x-4">
+            <div className="flex flex-col sm:flex-row items-center space-y-3 sm:space-y-0 sm:space-x-4">
               <div className="flex items-center space-x-2 text-sm text-gray-500">
                 <div className="w-2 h-2 bg-green-400 rounded-full"></div>
                 <span>Stok Baik</span>
